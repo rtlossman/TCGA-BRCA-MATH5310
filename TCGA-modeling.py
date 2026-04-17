@@ -341,7 +341,15 @@ def test_MLP(test_loader, model, classes):
 
     cm = confusion_matrix(labels, preds)
     disp = ConfusionMatrixDisplay(cm,display_labels = classes)
-    disp.plot()
+    
+    disp.plot(cmap='Blues', values_format='d')
+    for text in disp.text_.ravel():
+        text.set_fontsize(16)  
+    
+    val = int(text.get_text())
+    thresh = cm.max() / 2
+    text.set_color('white' if val > thresh else 'black')
+
     plt.show()
 
     
@@ -563,7 +571,15 @@ def test_CNN(test_loader, model, classes):
 
     cm = confusion_matrix(labels, preds)
     disp = ConfusionMatrixDisplay(cm,display_labels = classes)
-    disp.plot()
+    
+    disp.plot(cmap='Blues', values_format='d')
+    for text in disp.text_.ravel():
+        text.set_fontsize(16)  
+    
+    val = int(text.get_text())
+    thresh = cm.max() / 2
+    text.set_color('white' if val > thresh else 'black')
+
     plt.show()
 
 def sample_RNN_space(n, seed = 42):
@@ -811,9 +827,17 @@ def test_RNN(test_loader, model, classes):
 
     cm = confusion_matrix(labels, preds)
     disp = ConfusionMatrixDisplay(cm,display_labels = classes)
-    disp.plot()
-    plt.show()
+    
+    disp.plot(cmap='Blues', values_format='d')
+    for text in disp.text_.ravel():
+        text.set_fontsize(16)  
+    
+    val = int(text.get_text())
+    thresh = cm.max() / 2
+    text.set_color('white' if val > thresh else 'black')
 
+    plt.show()
+    
 def main():
     set_seed()
 
