@@ -54,8 +54,9 @@ df_plot <- data.frame(
 )
 ggplot(df_plot, aes(group, mean, fill=group)) +
   geom_col()+
-  geom_text(aes(label=label_number(accurary=0.001)(mean), vjust=10))+
+  geom_text(aes(label=label_number(accurary=0.001)(mean)), size = 6, vjust=-0.5)+
   labs(x="Method", y="Average Accuracy", title ="Validation accuracy by method") +
+  ylim(0,1)+
   theme_minimal()
 
 #Hypothesis test 2: Model Class Effect
@@ -85,7 +86,8 @@ df_plot <- data.frame(
   mean = c(mean(fnn_long$val_acc), mean(cnn_long$val_acc), mean(rnn_long$val_acc)))
 ggplot(df_plot, aes(group, mean, fill=group)) +
   geom_col()+
-  geom_text(aes(label=label_number(accurary=0.001)(mean), vjust=10))+
+  geom_text(aes(label=label_number(accurary=0.001)(mean)), size = 6, vjust=-0.5)+
+  ylim(0,1)+
   labs(x="Model Type", y="Average Accuracy", title = "Validation accuracy by Architecture type" ) +
   theme_minimal()
 
